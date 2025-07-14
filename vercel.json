@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/CC%E4%BD%9C%E6%88%90/integrated_view.html" },
-    { "source": "/([0-9]{2}_.+/.+)", "destination": "/CC%E4%BD%9C%E6%88%90/$1" }
+    { "source": "/", "destination": "/CC_Create/integrated_view.html" },
+    { "source": "/([0-9]{2}_.+/.+)", "destination": "/CC_Create/$1" }
   ]
 }
