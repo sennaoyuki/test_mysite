@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/CC作成/integrated_view.html" }
+    { "source": "/", "destination": "/CC作成/integrated_view.html" },
+    { "source": "/([0-9]{2}_.+/.+)", "destination": "/CC作成/$1" }
   ]
 }
