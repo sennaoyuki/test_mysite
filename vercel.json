@@ -1,2 +1,24 @@
 {
-}
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
+      }
+    ]
+  }
+
+  またはより明示的に:
+
+  {
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/$1"
+      }
+    ]
+  }
