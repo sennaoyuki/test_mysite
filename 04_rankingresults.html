@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【医師監修】信頼できる医療脱毛クリニック総合ランキング</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .ranking-container {
+            padding: 16px;
+        }
+
+        .ranking-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .ranking-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid #c0392b;
+        }
+
+        .ranking-header h2 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .ranking-card {
+            background-color: #4a5568;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ranking-badge {
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .clinic-name {
+            background-color: #4a5568;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card-content {
+            background-color: white;
+            padding: 0;
+        }
+
+        .clinic-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .price-overlay {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background-color: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .price-large {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .price-small {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .feature-item {
+            padding: 12px 8px;
+            text-align: center;
+            border-right: 1px solid #e0e0e0;
+            background-color: #f8f9fa;
+        }
+
+        .feature-item:last-child {
+            border-right: none;
+        }
+
+        .feature-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto 4px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .feature-icon.excellent {
+            background-color: #e74c3c;
+        }
+
+        .feature-icon.good {
+            background-color: #27ae60;
+        }
+
+        .feature-icon.fair {
+            background-color: #f39c12;
+        }
+
+        .feature-text {
+            font-size: 11px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .benefits-list {
+            padding: 16px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .benefit-item i {
+            color: #e74c3c;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 16px;
+            background-color: #f8f9fa;
+        }
+
+        .btn-details {
+            background-color: #4a5568;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-official {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-details:hover, .btn-official:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* 1位のクリニックを特別に目立たせる */
+        .ranking-card:first-of-type {
+            border: 3px solid #ffd700;
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .ranking-card:first-of-type .benefits-list {
+            padding: 20px 16px;
+        }
+
+        @media (min-width: 768px) {
+            .ranking-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 24px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 24px;
+            }
+
+            .ranking-header {
+                grid-column: 1 / -1;
+                margin-bottom: 0;
+            }
+
+            .clinic-name {
+                font-size: 18px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .feature-item {
+                padding: 16px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <div class="ranking-header">
+            <h2>【医師監修】信頼できる医療脱毛クリニック総合ランキング</h2>
+        </div>
+
+        <!-- 第1位：湘南美容クリニック -->
+        <div class="ranking-card">
+            <div class="ranking-badge">🏆 第1位 最もおすすめ</div>
+            <div class="clinic-name">湘南美容クリニック（医療脱毛）</div>
+            <div class="card-content">
+                <div class="clinic-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 375 200\"><rect width=\"375\" height=\"200\" fill=\"%23e74c3c\"/><text x=\"50%\" y=\"40%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"16\">湘南美容クリニック</text><text x=\"50%\" y=\"60%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"12\">医療脱毛専門</text></svg>')">
+                    <div class="price-overlay">
+                        <div class="price-large">6,180円</div>
+                        <div class="price-small">両ワキ脱毛/6回</div>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-title">料金満足度</div>
+                        <div class="feature-icon excellent">◎</div>
+                        <div class="feature-text">6,180円<br>両ワキ脱毛6回</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">脱毛効果</div>
+                        <div class="feature-icon excellent">◎</div>
+                        <div class="feature-text">脱毛満足度98.6%</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">来院のしやすさ</div>
+                        <div class="feature-icon excellent">◎</div>
+                        <div class="feature-text">全国130院展開</div>
+                    </div>
+                </div>
+
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>全国130院展開で<span class="highlight">通いやすさNo.1</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>脱毛満足度<span class="highlight">98.6%の圧倒的な施術効果</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>両ワキ脱毛6,180円から始められる<span class="highlight">リーズナブルな価格</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>医療脱毛専門クリニックで<span class="highlight">プライバシー配慮</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>23時まで診療で<span class="highlight">仕事帰りに通いやすい</span></span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-details">
+                        詳細を見る
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <button class="btn-official">
+                        今すぐ無料カウンセリング予約
+                        <i class="fas fa-calendar-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第2位：リゼクリニック -->
+        <div class="ranking-card">
+            <div class="ranking-badge">🥈 第2位</div>
+            <div class="clinic-name">リゼクリニック</div>
+            <div class="card-content">
+                <div class="clinic-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 375 200\"><rect width=\"375\" height=\"200\" fill=\"%23333\"/><text x=\"50%\" y=\"40%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"16\">リゼクリニック</text><text x=\"50%\" y=\"60%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"12\">医療脱毛</text></svg>')">
+                    <div class="price-overlay">
+                        <div class="price-large">19,800円</div>
+                        <div class="price-small">両ワキ脱毛/5回</div>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-title">料金満足度</div>
+                        <div class="feature-icon excellent">◎</div>
+                        <div class="feature-text">19,800円<br>両ワキ脱毛5回</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">脱毛効果</div>
+                        <div class="feature-icon good">○</div>
+                        <div class="feature-text">高い脱毛効果</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">来院のしやすさ</div>
+                        <div class="feature-icon excellent">◎</div>
+                        <div class="feature-text">全国26院</div>
+                    </div>
+                </div>
+
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>全国26院の<span class="highlight">優れたアクセス</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>両ワキ脱毛19,800円から始められる適正価格</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>蓄熱式・熱破壊式など最新脱毛機器も対応</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-details">
+                        詳細を見る
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <button class="btn-official">
+                        無料カウンセリング予約
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第3位：エミナルクリニック -->
+        <div class="ranking-card">
+            <div class="ranking-badge">🥉 第3位</div>
+            <div class="clinic-name">エミナルクリニック</div>
+            <div class="card-content">
+                <div class="clinic-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 375 200\"><rect width=\"375\" height=\"200\" fill=\"%23333\"/><text x=\"50%\" y=\"40%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"16\">エミナルクリニック</text><text x=\"50%\" y=\"60%\" text-anchor=\"middle\" dy=\".3em\" fill=\"white\" font-size=\"12\">医療脱毛</text></svg>')">
+                    <div class="price-overlay">
+                        <div class="price-large">119,000円</div>
+                        <div class="price-small">全身脱毛/5回</div>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-title">料金満足度</div>
+                        <div class="feature-icon fair">○</div>
+                        <div class="feature-text">119,000円<br>全身脱毛5回</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">脱毛効果</div>
+                        <div class="feature-icon good">○</div>
+                        <div class="feature-text">高い</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-title">来院のしやすさ</div>
+                        <div class="feature-icon good">○</div>
+                        <div class="feature-text">全国60院</div>
+                    </div>
+                </div>
+
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>全国60院展開で<span class="highlight">通いやすい環境</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>蓄熱式ダイオードレーザーなど高度な脱毛機器も選択可能</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>追加料金なしの<span class="highlight">明朗会計システム</span></span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-details">
+                        詳細を見る
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <button class="btn-official">
+                        無料カウンセリング予約
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.btn-details, .btn-official').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
