@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたに最適な医療脱毛クリニック検索フォーム</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .search-form {
+            background-color: #ffffff;
+            padding: 20px 16px;
+            border-radius: 8px;
+            margin: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .form-title .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #ffffff;
+            appearance: none;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%23666" d="M6 8L0 0h12z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 12px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 8px;
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.4);
+        }
+
+        .search-btn i {
+            font-size: 16px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .promo-banner i {
+            font-size: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .search-form {
+                max-width: 800px;
+                margin: 24px auto;
+                padding: 32px;
+            }
+
+            .form-title {
+                font-size: 18px;
+                margin-bottom: 24px;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+
+            .search-btn {
+                grid-column: span 2;
+                margin-top: 0;
+            }
+
+            .form-select {
+                padding: 14px 12px;
+                font-size: 16px;
+            }
+
+            .search-btn {
+                padding: 14px 32px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form class="search-form">
+        <div class="promo-banner">
+            <i class="fas fa-spa"></i>
+            <span>※当サイトはプロモーションを含んでいます</span>
+        </div>
+        
+        <div class="form-title">
+            あなたにぴったりな <span class="highlight">医療脱毛クリニック</span> を検索
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <select class="form-select">
+                    <option>脱毛部位</option>
+                    <option>顔脱毛</option>
+                    <option>ワキ脱毛</option>
+                    <option>脚脱毛</option>
+                    <option>全身脱毛</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-select">
+                    <option>都道府県</option>
+                    <option>東京都</option>
+                    <option>大阪府</option>
+                    <option>愛知県</option>
+                    <option>神奈川県</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-select">
+                    <option>脱毛方法</option>
+                    <option>レーザー脱毛</option>
+                    <option>IPL脱毛</option>
+                    <option>ニードル脱毛</option>
+                    <option>ワックス脱毛</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-select">
+                    <option>予算</option>
+                    <option>～5万円</option>
+                    <option>～10万円</option>
+                    <option>～20万円</option>
+                    <option>20万円以上</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-select">
+                    <option>施術開始</option>
+                    <option>すぐに</option>
+                    <option>1ヶ月以内</option>
+                    <option>3ヶ月以内</option>
+                    <option>半年以内</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-select">
+                    <option>アフターケア</option>
+                    <option>不要</option>
+                    <option>最小限</option>
+                    <option>しっかり</option>
+                    <option>十分すぎるほど</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+            無料カウンセリングを探す
+        </button>
+    </form>
+
+    <script>
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // ホバー効果のシミュレーション
+            const searchBtn = document.querySelector('.search-btn');
+            searchBtn.style.transform = 'scale(0.98)';
+            
+            setTimeout(() => {
+                searchBtn.style.transform = 'scale(1)';
+            }, 150);
+            
+            console.log('医療脱毛クリニック検索実行');
+        });
+    </script>
+</body>
+</html>

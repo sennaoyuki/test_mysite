@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コンポーネント統合ビュー (最終改善版・SP対応)</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; background-color: #f0f2f5; }
+        .component-wrapper {
+        margin: 0 auto;
+        max-width: 1200px;
+        iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            vertical-align: bottom;
+            background-color: #fff;
+            transition: height 0.2s ease-in-out;
+        }
+    </style>
+    <script>
+        // 全てのiframe要素を格納する配列
+        const allIframes = [];
+
+        // iframeの高さを更新するコアな関数
+        function updateIframeHeight(iframe) {
+            try {
+                const contentHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                if (contentHeight > 0 && iframe.style.height !== contentHeight + 'px') {
+                    iframe.style.height = contentHeight + 'px';
+                    console.log(`[${iframe.title}] 高さを更新: ${contentHeight}px`);
+                }
+            } catch (e) {
+                console.error(`[${iframe.title}] 高さの更新中にエラーが発生しました。`, e);
+            }
+        }
+
+        // iframeの初期設定と監視を行う関数
+        function setupIframe(iframe) {
+            console.log(`[${iframe.title}] onloadイベント発生。監視をセットアップします。`);
+            
+            // 全てのiframeをリストに追加
+            allIframes.push(iframe);
+            
+            try {
+                const targetDocument = iframe.contentWindow.document;
+                const targetElement = targetDocument.body;
+
+                // 1. iframe内部のサイズ変更を監視
+                const observer = new ResizeObserver(() => {
+                    updateIframeHeight(iframe);
+                });
+                observer.observe(targetElement);
+
+                // 2. 初期読み込み時の高さを設定
+                updateIframeHeight(iframe);
+
+            } catch (e) {
+                console.error(`[${iframe.title}] 監視のセットアップ中にエラーが発生しました。`, e);
+            }
+        }
+
+        // 3. 親ウィンドウ（ブラウザ）のサイズ変更を監視
+        window.addEventListener('resize', () => {
+            console.log('--- ウィンドウリサイズ検知 --- 全てのiframeの高さを再計算します ---');
+            // 簡素化のため、少し待ってから全iframeの高さを更新
+            setTimeout(() => {
+                allIframes.forEach(iframe => {
+                    updateIframeHeight(iframe);
+                });
+            }, 300); // 0.3秒待ってから実行
+        });
+    </script>
+</head>
+<body>
+</body></html>

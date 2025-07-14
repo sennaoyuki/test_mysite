@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コンポーネント統合ビュー</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          margin: 0;
+          padding: 0;
+          background-color: #f5f5f5;
+          font-family: 'Amazon Ember', Arial, sans-serif;
+          line-height: 1.4;
+          color: #0F1111;
+        }
+        
+        .main-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          background-color: #ffffff;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+          background: linear-gradient(to bottom, #232F3E, #131A22);
+          color: white;
+          padding: 12px 20px;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        
+        .header-logo {
+          font-size: 28px;
+          font-weight: 700;
+          color: #FF9900;
+        }
+        
+        .nav-bar {
+          background-color: #232F3E;
+          padding: 8px 20px;
+          border-bottom: 1px solid #3a4553;
+        }
+        
+        .nav-items {
+          display: flex;
+          gap: 24px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          flex-wrap: wrap;
+        }
+        
+        .nav-item {
+          color: #cccccc;
+          text-decoration: none;
+          padding: 8px 12px;
+          border-radius: 4px;
+          transition: all 0.2s ease;
+          font-size: 14px;
+          cursor: pointer;
+          position: relative;
+        }
+        
+        .nav-item:hover {
+          background-color: #3a4553;
+          color: white;
+        }
+        
+        .nav-item.active {
+          background-color: #FF9900;
+          color: #0F1111;
+        }
+        
+        .content-wrapper {
+          padding: 20px;
+        }
+        
+        .component-section {
+          margin-bottom: 20px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          overflow: hidden;
+          transition: box-shadow 0.3s ease;
+        }
+        
+        .component-section:hover {
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .section-header {
+          background-color: #f8f9fa;
+          padding: 16px 20px;
+          border-bottom: 1px solid #e9ecef;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .section-title {
+          font-size: 18px;
+          font-weight: 600;
+          color: #0F1111;
+          margin: 0;
+        }
+        
+        .section-toggle {
+          background: none;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+          color: #565959;
+          transition: transform 0.2s ease;
+        }
+        
+        .section-toggle:hover {
+          color: #FF9900;
+        }
+        
+        .section-content {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .section-content.collapsed {
+          max-height: 0;
+          transition: max-height 0.3s ease;
+        }
+        
+        .section-content.expanded {
+          max-height: 2000px;
+          transition: max-height 0.3s ease;
+        }
+        
+        iframe {
+          width: 100%;
+          border: none;
+          display: block;
+          vertical-align: bottom;
+          max-width: 100%;
+          transition: height 0.3s ease;
+        }
+        
+        .loading-indicator {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.95);
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          display: none;
+          z-index: 10;
+          text-align: center;
+        }
+        
+        .loading-indicator.show {
+          display: block;
+        }
+        
+        .loading-spinner {
+          width: 24px;
+          height: 24px;
+          border: 3px solid #f3f3f3;
+          border-top: 3px solid #FF9900;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+          margin: 0 auto 12px;
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+          background-color: #ffeaa7;
+          color: #e17055;
+          padding: 16px 20px;
+          margin: 20px;
+          border-radius: 4px;
+          border-left: 4px solid #e17055;
+          display: none;
+        }
+        
+        .error-message.show {
+          display: block;
+        }
+        
+        .scroll-indicator {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: #e9ecef;
+          z-index: 1001;
+        }
+        
+        .scroll-progress {
+          height: 100%;
+          background-color: #FF9900;
+          width: 0%;
+          transition: width 0.1s ease;
+        }
+        
+        .floating-actions {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          z-index: 100;
+        }
+        
+        .float-button {
+          background: #FF9900;
+          color: white;
+          border: none;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 18px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .float-button:hover {
+          background: #e88900;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .float-button:active {
+          transform: translateY(0);
+        }
+        
+        .mini-nav {
+          position: fixed;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.95);
+          padding: 16px 8px;
+          border-radius: 24px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          display: none;
+          z-index: 99;
+        }
+        
+        .mini-nav.show {
+          display: block;
+        }
+        
+        .mini-nav-item {
+          display: block;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: #ddd;
+          margin: 8px 0;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        
+        .mini-nav-item.active {
+          background-color: #FF9900;
+          transform: scale(1.2);
+        }
+        
+        .mini-nav-item:hover {
+          background-color: #FF9900;
+        }
+        
+        @media (max-width: 768px) {
+          .main-container {
+            margin: 0;
+            box-shadow: none;
+          }
+          
+          .header {
+            padding: 12px 16px;
+          }
+          
+          .header h1 {
+            font-size: 20px;
+          }
+          
+          .nav-bar {
+            padding: 8px 16px;
+          }
+          
+          .nav-items {
+            gap: 16px;
+          }
+          
+          .content-wrapper {
+            padding: 16px;
+          }
+          
+          .section-header {
+            padding: 12px 16px;
+          }
+          
+          .section-title {
+            font-size: 16px;
+          }
+          
+          iframe {
+            min-height: 200px;
+          }
+          
+          .mini-nav {
+            display: none !important;
+          }
+        }
+        
+        @media (max-width: 375px) {
+          body {
+            font-size: 14px;
+          }
+          
+          .header {
+            padding: 10px 12px;
+          }
+          
+          .header h1 {
+            font-size: 18px;
+          }
+          
+          .nav-bar {
+            padding: 6px 12px;
+          }
+          
+          .nav-items {
+            gap: 12px;
+          }
+          
+          .nav-item {
+            padding: 6px 8px;
+            font-size: 12px;
+          }
+          
+          .content-wrapper {
+            padding: 12px;
+          }
+          
+          .section-header {
+            padding: 10px 12px;
+          }
+          
+          .section-title {
+            font-size: 14px;
+          }
+          
+          iframe {
+            min-height: 150px;
+          }
+          
+          .loading-indicator {
+            font-size: 12px;
+            padding: 16px;
+          }
+          
+          .floating-actions {
+            bottom: 20px;
+            right: 20px;
+          }
+          
+          .float-button {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+          }
+        }
+    </style>
+    <script>
+        const allIframes = [];
+        let isLoading = false;
+        let currentSection = 0;
+        
+        const sections = [
+            { id: 'header', title: 'ヘッダー', icon: '🏠' },
+            { id: 'mainvisual', title: 'メインビジュアル', icon: '🎨' },
+            { id: 'searchform', title: '検索フォーム', icon: '🔍' },
+            { id: 'ranking', title: 'ランキング', icon: '🏆' },
+            { id: 'comparison', title: '比較表', icon: '📊' },
+            { id: 'detailed', title: '詳細コンテンツ', icon: '📝' },
+            { id: 'columns', title: 'コラム', icon: '📰' },
+            { id: 'footer', title: 'フッター', icon: '🔗' }
+        ];
+        
+        function showLoading(section) {
+            const indicator = section.querySelector('.loading-indicator');
+            if (indicator) indicator.classList.add('show');
+        }
+        
+        function hideLoading(section) {
+            const indicator = section.querySelector('.loading-indicator');
+            if (indicator) indicator.classList.remove('show');
+        }
+        
+        function showError(section, message) {
+            const errorDiv = section.querySelector('.error-message');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.classList.add('show');
+            }
+        }
+        
+        function updateIframeHeight(iframe) {
+            try {
+                const contentHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                if (contentHeight > 0 && iframe.style.height !== contentHeight + 'px') {
+                    iframe.style.height = contentHeight + 'px';
+                }
+            } catch (e) {
+                console.warn('iframe height update failed:', e);
+            }
+        }
+        
+        function setupIframe(iframe) {
+            allIframes.push(iframe);
+            const section = iframe.closest('.component-section');
+            
+            showLoading(section);
+            
+            iframe.addEventListener('load', () => {
+                hideLoading(section);
+                try {
+                    const observer = new ResizeObserver(() => updateIframeHeight(iframe));
+                    observer.observe(iframe.contentWindow.document.body);
+                    updateIframeHeight(iframe);
+                } catch (e) {
+                    console.warn('iframe setup failed:', e);
+                }
+            });
+            
+            iframe.addEventListener('error', () => {
+                hideLoading(section);
+                showError(section, 'コンポーネントの読み込みに失敗しました');
+            });
+        }
+        
+        function toggleSection(index) {
+            const section = document.querySelectorAll('.component-section')[index];
+            if (!section) return;
+            
+            const content = section.querySelector('.section-content');
+            const toggle = section.querySelector('.section-toggle');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                toggle.textContent = '−';
+            } else {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                toggle.textContent = '+';
+            }
+        }
+        
+        function scrollToSection(index) {
+            const sections = document.querySelectorAll('.component-section');
+            if (sections[index]) {
+                sections[index].scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                updateActiveNav(index);
+            }
+        }
+        
+        function updateActiveNav(index) {
+            currentSection = index;
+            
+            // Update main nav
+            document.querySelectorAll('.nav-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            
+            // Update mini nav
+            document.querySelectorAll('.mini-nav-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateActiveNav(0);
+        }
+        
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            
+            const progressBar = document.querySelector('.scroll-progress');
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+        }
+        
+        function handleScroll() {
+            updateScrollProgress();
+            
+            const sections = document.querySelectorAll('.component-section');
+            let currentIndex = 0;
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2) {
+                    currentIndex = index;
+                }
+            });
+            
+            if (currentIndex !== currentSection) {
+                updateActiveNav(currentIndex);
+            }
+        }
+        
+        function initializePage() {
+            // Initialize all sections as expanded
+            document.querySelectorAll('.section-content').forEach(content => {
+                content.classList.add('expanded');
+            });
+            
+            // Show mini nav on desktop
+            if (window.innerWidth > 768) {
+                document.querySelector('.mini-nav').classList.add('show');
+            }
+            
+            // Update initial scroll position
+            updateScrollProgress();
+            updateActiveNav(0);
+        }
+        
+        window.addEventListener('resize', () => {
+            if (isLoading) return;
+            isLoading = true;
+            setTimeout(() => {
+                allIframes.forEach(updateIframeHeight);
+                isLoading = false;
+            }, 300);
+            
+            // Show/hide mini nav based on screen size
+            const miniNav = document.querySelector('.mini-nav');
+            if (window.innerWidth > 768) {
+                miniNav.classList.add('show');
+            } else {
+                miniNav.classList.remove('show');
+            }
+        });
+        
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => allIframes.forEach(updateIframeHeight), 500);
+        });
+        
+        window.addEventListener('scroll', handleScroll);
+        
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+    
+    <div class="main-container">
+        <header class="header">
+            <h1>
+                <span class="header-logo">Amazon</span>
+                <span>コンポーネントストア</span>
+            </h1>
+        </header>
+        
+        <nav class="nav-bar">
+            <ul class="nav-items">
+                <li class="nav-item active" onclick="scrollToSection(0)">🏠 ヘッダー</li>
+                <li class="nav-item" onclick="scrollToSection(1)">🎨 メインビジュアル</li>
+                <li class="nav-item" onclick="scrollToSection(2)">🔍 検索フォーム</li>
+                <li class="nav-item" onclick="scrollToSection(3)">🏆 ランキング</li>
+                <li class="nav-item" onclick="scrollToSection(4)">📊 比較表</li>
+                <li class="nav-item" onclick="scrollToSection(5)">📝 詳細コンテンツ</li>
+                <li class="nav-item" onclick="scrollToSection(6)">📰 コラム</li>
+                <li class="nav-item" onclick="scrollToSection(7)">🔗 フッター</li>
+            </ul>
+        </nav>
+        
+        <main class="content-wrapper">
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">🏠 ヘッダーコンポーネント</h2>
+                    <button class="section-toggle" onclick="toggleSection(0)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="01_Header/01_header.html" onload="setupIframe(this)" title="ヘッダー"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">🎨 メインビジュアル</h2>
+                    <button class="section-toggle" onclick="toggleSection(1)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="02_MainVisual/02_mainvisual.html" onload="setupIframe(this)" title="メインビジュアル"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">🔍 検索フォーム</h2>
+                    <button class="section-toggle" onclick="toggleSection(2)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="03_SearchForm/03_searchform.html" onload="setupIframe(this)" title="検索フォーム"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">🏆 ランキング結果</h2>
+                    <button class="section-toggle" onclick="toggleSection(3)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="04_RankingResults/04_rankingresults.html" onload="setupIframe(this)" title="ランキング結果"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">📊 比較表</h2>
+                    <button class="section-toggle" onclick="toggleSection(4)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="06_ComparisonTable/06_comparisontable.html" onload="setupIframe(this)" title="比較表"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">📝 詳細コンテンツ</h2>
+                    <button class="section-toggle" onclick="toggleSection(5)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="07_DetailedContent/07_detailedcontent.html" onload="setupIframe(this)" title="詳細コンテンツ"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">📰 コラム</h2>
+                    <button class="section-toggle" onclick="toggleSection(6)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="08_Columns/08_columns.html" onload="setupIframe(this)" title="コラム"></iframe>
+                </div>
+            </section>
+            
+            <section class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">🔗 フッター</h2>
+                    <button class="section-toggle" onclick="toggleSection(7)">−</button>
+                </div>
+                <div class="section-content">
+                    <div class="loading-indicator">
+                        <div class="loading-spinner"></div>
+                        読み込み中...
+                    </div>
+                    <div class="error-message"></div>
+                    <iframe src="09_Footer/09_footer.html" onload="setupIframe(this)" title="フッター"></iframe>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div class="mini-nav">
+        <div class="mini-nav-item active" onclick="scrollToSection(0)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(1)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(2)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(3)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(4)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(5)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(6)"></div>
+        <div class="mini-nav-item" onclick="scrollToSection(7)"></div>
+    </div>
+    
+    <div class="floating-actions">
+        <button class="float-button" onclick="scrollToTop()" title="トップへ戻る">↑</button>
+        <button class="float-button" onclick="window.location.reload()" title="リロード">⟳</button>
+    </div>
+</body>
+</html>

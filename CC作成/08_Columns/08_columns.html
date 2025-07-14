@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【医師監修】医療脱毛を始める前に知っておくべきこと</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        .columns-container {
+            padding: 16px;
+            max-width: 375px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Header with image */
+        .article-header {
+            position: relative;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDMwQzI1LjUyMjggMzAgMzAgMjUuNTIyOCAzMCAyMEMzMCAxNC40NzcyIDI1LjUyMjggMTAgMjAgMTBDMTQuNDc3MiAxMCAxMCAxNC40NzcyIDEwIDIwQzEwIDI1LjUyMjggMTQuNDc3MiAzMCAyMCAzMFoiIHN0cm9rZT0iIzY2NjY2NiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHN0cm9rZSBkPSJNMTMgMjNMMjAgMTZMMjcgMjMiIHN0cm9rZT0iIzY2NjY2NiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+') no-repeat center;
+        }
+
+        .article-title {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: rgba(255,255,255,0.95);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            max-width: calc(100% - 32px);
+            line-height: 1.4;
+        }
+
+        /* Table of Contents */
+        .toc-section {
+            padding: 16px;
+            background-color: #f8f9fa;
+        }
+
+        .toc-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 8px;
+        }
+
+        .toc-link {
+            color: #e74c3c;
+            text-decoration: underline;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .toc-sub-item {
+            margin-left: 16px;
+            margin-top: 4px;
+            font-size: 13px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 20px 16px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        .section-content {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box .section-title {
+            color: #1976d2;
+            margin-bottom: 12px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .table-header th {
+            padding: 12px 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .table-row td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 13px;
+        }
+
+        .table-row:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .row-header {
+            background-color: #e3f2fd !important;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .highlight-cell {
+            background-color: #fff3cd;
+            font-weight: bold;
+        }
+
+        /* Merit/Demerit Table */
+        .merit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        .merit-header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .merit-category {
+            background-color: #e3f2fd;
+            color: #333;
+            font-weight: bold;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .merit-content {
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            vertical-align: top;
+        }
+
+        .merit-content ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        .merit-content li {
+            margin-bottom: 4px;
+        }
+
+        /* Subsection titles */
+        .subsection-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Pain information boxes */
+        .pain-area-box {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+
+        .pain-area {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* Warning sections */
+        .warning-section {
+            background-color: #fff8e1;
+            border-left: 4px solid #f57f17;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .warning-title {
+            color: #f57f17;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        /* Contact information */
+        .contact-list {
+            list-style: none;
+            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .contact-item {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-link {
+            color: #e74c3c;
+            text-decoration: underline;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Fee list */
+        .fee-list {
+            list-style: none;
+            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .fee-item {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            padding: 4px 0;
+        }
+
+        @media (min-width: 768px) {
+            .columns-container {
+                max-width: 800px;
+                padding: 24px;
+            }
+
+            .article-title {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .subsection-title {
+                font-size: 18px;
+            }
+
+            .section-content {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="columns-container">
+        <!-- Main Article Card -->
+        <div class="article-card">
+            <div class="article-header">
+                <div class="header-image">
+                    <div class="header-image-placeholder"></div>
+                </div>
+                <div class="article-title">
+                    医療脱毛を始める前に知ってお<br>
+                    くべきこと
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-section">
+                <div class="toc-title">目次</div>
+                <ul class="toc-list">
+                    <li class="toc-item">
+                        <a href="#comparison" class="toc-link">医療脱毛とセルフ脱毛の違い</a>
+                        <div class="toc-sub-item">
+                            <a href="#mechanism" class="toc-link">医療脱毛とセルフ脱毛の仕組み</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#merits" class="toc-link">医療脱毛とセルフ脱毛のメリット・デメリット</a>
+                        </div>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#risks" class="toc-link">医療脱毛に伴うリスクや副作用</a>
+                        <div class="toc-sub-item">
+                            <a href="#side-effects" class="toc-link">医療脱毛で起こりうる副作用</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#pain" class="toc-link">医療脱毛の痛みについて</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#precautions" class="toc-link">治療前にやってはいけないこと</a>
+                        </div>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#contract" class="toc-link">医療脱毛を契約する時の注意点</a>
+                        <div class="toc-sub-item">
+                            <a href="#insurance" class="toc-link">医療脱毛は保険適用外</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#details" class="toc-link">脱毛内容について細かく確認する</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#additional-fees" class="toc-link">追加費用がかからないか確認する</a>
+                        </div>
+                        <div class="toc-sub-item">
+                            <a href="#troubles" class="toc-link">それでもトラブルになってしまったら</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- AGA Clinic vs Self Care Comparison -->
+        <div class="article-card">
+            <div class="content-section" id="comparison">
+                <div class="section-title">医療脱毛とセルフ脱毛の違い</div>
+                <div class="section-content">
+                    「脱毛」には、大きく分けて「医療脱毛」と「セルフ脱毛（家庭用脱毛器・脱毛サロンなど）」の<span style="background-color: #fff3cd; padding: 2px 4px;">2種類があります</span>。それぞれの仕組みやメリット・デメリットを理解して、どちらが自分に適しているか判断するようにしましょう。
+                </div>
+
+                <table class="comparison-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th></th>
+                            <th>医療脱毛</th>
+                            <th>セルフ脱毛</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td class="row-header">脱毛方法</td>
+                            <td>医療用レーザー</td>
+                            <td>光脱毛・家庭用脱毛器</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">副作用</td>
+                            <td>可能性あり（医師管理）</td>
+                            <td>軽微</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">効果実感期間(※)</td>
+                            <td>3～5回</td>
+                            <td>10～20回</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">完了期間(※)</td>
+                            <td>8～12ヶ月</td>
+                            <td>2～3年</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">年間費用</td>
+                            <td>20～40万円<br>（脱毛部位による）</td>
+                            <td>5～15万円</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">運営元</td>
+                            <td>医療機関<br>（クリニック）</td>
+                            <td>エステサロン・個人</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="row-header">専門性</td>
+                            <td>医師による診察・施術</td>
+                            <td>エステティシャン・自己判断</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-content">
+                    <small>（※）効果実感期間は毛量減少が感じられる目安です。個人差や毛質・毛量による違いがあります。また、脱毛を中止すると再び毛が生えてくる可能性があります。</small>
+                </div>
+
+                <div class="section-content" style="margin-top: 16px;">
+                    医療脱毛は、医師による適切な診察と効果の高い医療レーザーにより、比較的短期間で効果を実感することができます。一方で、セルフ脱毛は費用を抑えて手軽に始められますが、効果を実感するまで時間がかかる場合があります。
+                </div>
+            </div>
+        </div>
+
+        <!-- Mechanism Section -->
+        <div class="article-card">
+            <div class="highlight-box" id="mechanism">
+                <div class="section-title">医療脱毛とセルフ脱毛の仕組み</div>
+                <div class="section-content">
+                    医療脱毛とセルフ脱毛では、毛へのアプローチの仕組みが異なります。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    医療脱毛では、医療機関でのみ使用される<span style="background-color: #fff3cd; padding: 2px 4px;">アレキサンドライトレーザーやダイオードレーザーなどの医療用レーザー</span>を使用します。これらは毛根の発毛組織を破壊し、永久脱毛効果を発揮します。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    一方のセルフ脱毛では、光脱毛や家庭用脱毛器を使用しますが、これらは医療レーザーと比べて<span style="background-color: #fff3cd; padding: 2px 4px;">「毛根への一時的ダメージ」や「減毛効果」</span>が主な目的となります。
+                </div>
+            </div>
+        </div>
+
+        <!-- Merits and Demerits -->
+        <div class="article-card">
+            <div class="highlight-box" id="merits">
+                <div class="section-title">医療脱毛とセルフ脱毛のメリット・デメリット</div>
+                <div class="section-content">
+                    以上の内容を踏まえて、医療脱毛とセルフ脱毛のメリット・デメリットをまとめました。自分に適した脱毛方法選びの参考にしてください。
+                </div>
+
+                <table class="merit-table">
+                    <thead>
+                        <tr>
+                            <th class="merit-header"></th>
+                            <th class="merit-header">医療脱毛</th>
+                            <th class="merit-header">セルフ脱毛</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="merit-category">メリット</td>
+                            <td class="merit-content">
+                                <ul>
+                                    <li>短期間で効果を実感できる</li>
+                                    <li>医師による適切な診察・管理</li>
+                                    <li>永久脱毛効果が期待できる</li>
+                                </ul>
+                            </td>
+                            <td class="merit-content">
+                                <ul>
+                                    <li>費用を抑えて始められる</li>
+                                    <li>自宅で手軽に継続できる</li>
+                                    <li>副作用のリスクが低い</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="merit-category">デメリット</td>
+                            <td class="merit-content">
+                                <ul>
+                                    <li>費用が高額になりがち</li>
+                                    <li>痛みや副作用の可能性がある</li>
+                                    <li>定期的な通院が必要</li>
+                                </ul>
+                            </td>
+                            <td class="merit-content">
+                                <ul>
+                                    <li>効果を実感するまで時間がかかる</li>
+                                    <li>永久脱毛効果が期待できない</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Risks and Side Effects -->
+        <div class="article-card">
+            <div class="content-section" id="risks">
+                <div class="section-title">医療脱毛に伴うリスクや副作用</div>
+                <div class="header-image" style="height: 150px; margin: 16px 0;">
+                    <div class="header-image-placeholder"></div>
+                </div>
+                <div class="section-content">
+                    医療脱毛は医師による適切な診察・管理のもとで行われる安全性の高い脱毛方法です。しかし、レーザーを使用する施術のため、一定の副作用が起こる可能性があります。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    各クリニックでは、できる限り安全に医療脱毛が行えるような取り組みを行っています。とはいえ、リスクが全くないわけではなく、副作用を引き起こしてしまう可能性もあります。
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Effects Detail -->
+        <div class="article-card">
+            <div class="highlight-box" id="side-effects">
+                <div class="section-title">AGA治療で起こりうる副作用</div>
+                <div class="section-content">
+                    AGA治療の副作用として起こりうる症状は以下の通りです。
+                </div>
+
+                <div class="subsection-title">性機能に関する副作用</div>
+                <div class="section-content">
+                    フィナステリドやデュタステリドの服用により、性欲減退や勃起不全などの性機能障害が起こる可能性があります。発生率は低いですが、気になる症状がある場合は医師に相談してください。
+                </div>
+
+                <div class="subsection-title">初期脱毛</div>
+                <div class="section-content">
+                    治療開始から1～2ヶ月の間に、一時的に抜け毛が増える現象です。毛周期の正常化により起こる好転反応であり、通常2～3ヶ月で改善します。
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Side Effects -->
+        <div class="article-card">
+            <div class="content-section">
+                <div class="subsection-title">その他の副作用</div>
+                <div class="section-content">
+                    ミノキシジルの使用により、頭皮のかゆみ、かぶれ、フケなどの皮膚症状が起こる場合があります。また、血圧に影響を与える可能性があるため、高血圧や心疾患の方は特に注意が必要です。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    肝機能への影響が報告されている薬剤もあるため、定期的な血液検査による経過観察が推奨されます。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    AGA治療を契約するときには、あらかじめ副作用について説明を受け、万が一副作用が起こった場合にどう対処してもらえるかまで確認しておきましょう。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    また、服用中の薬によって副作用のリスクも異なる場合があるので、常用薬のある人は、カウンセリング時に必ず伝えておくようにしましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Effects Information -->
+        <div class="article-card">
+            <div class="highlight-box" id="pain">
+                <div class="section-title">AGA治療の副作用について</div>
+                <div class="section-content">
+                    AGA治療薬の副作用は、<span style="background-color: #fff3cd; padding: 2px 4px;">薬剤の種類や個人の体質によって発生頻度や程度が異なります</span>。副作用の感じ方は人それぞれで、全く感じない方も多くいらっしゃいます。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    一般的に副作用が起こりやすいとされる薬剤は、以下のようなものです。
+                </div>
+
+                <div class="pain-area-box">
+                    <div class="pain-area">フィナステリド（プロペシア）</div>
+                    <div class="pain-area">デュタステリド（ザガーロ）</div>
+                    <div class="pain-area">ミノキシジル（内服・外用）</div>
+                </div>
+
+                <div class="section-content">
+                    AGA治療を受ける際は、副作用のリスクがあることを理解しておく必要があります。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    ただし、副作用対策に注力しているクリニックも多く、定期的な血液検査や経過観察を行うことで、副作用を最小限に抑える対策を取ることは可能です。カウンセリング時に、副作用に関する詳しい説明を受けるようにしましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- Pre-treatment Precautions -->
+        <div class="article-card">
+            <div class="highlight-box" id="precautions">
+                <div class="section-title">治療前にやってはいけないこと</div>
+                <div class="section-content">
+                    AGA治療における副作用のリスクを減らし、治療効果を高めるために、以下のことはやらないようにご注意ください。
+                </div>
+
+                <div class="subsection-title">過度の飲酒・喫煙</div>
+                <div class="section-content">
+                    アルコールや喫煙は血行を悪化させ、薬剤の効果を減少させる可能性があります。また、肝機能に負担をかけるため、AGA治療薬の代謝にも影響を与える場合があります。
+                </div>
+
+                <div class="subsection-title">他の薬剤との併用</div>
+                <div class="section-content">
+                    市販の育毛剤や他の薬剤との併用は、予期しない副作用を引き起こす可能性があります。現在服用している薬がある場合は、必ず医師に相談してください。
+                </div>
+
+                <div class="subsection-title">ストレスの蓄積・不規則な生活</div>
+                <div class="section-content">
+                    ストレスや不規則な生活習慣は、ホルモンバランスを乱し、AGA治療の効果を妨げる可能性があります。規則正しい生活と適度な運動を心がけましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- Contract Considerations -->
+        <div class="article-card">
+            <div class="content-section" id="contract">
+                <div class="section-title">医療脱毛を契約する時の注意点</div>
+                <div class="header-image" style="height: 150px; margin: 16px 0;">
+                    <div class="header-image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance Coverage -->
+        <div class="article-card">
+            <div class="highlight-box" id="insurance">
+                <div class="section-title">医療脱毛は保険適用外</div>
+                <div class="section-content">
+                    「医療脱毛は、医療行為だから保険が適用される」と考えている人が多いですが、ほとんどの場合、医療脱毛は保険が適用されません。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    医療脱毛の主な目的は、「見た目を改善したい」や「毛の悩みを解決したい」という美容・QOL向上目的である場合が多いため、保険が適用されない自由診療に分類されます。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    <span style="background-color: #fff3cd; padding: 2px 4px;">医療脱毛は全額が自費負担</span>になりますので、契約の際は費用についてしっかりと確認しておきましょう。
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Service Confirmation -->
+        <div class="article-card">
+            <div class="highlight-box" id="details">
+                <div class="section-title">脱毛内容について細かく確認する</div>
+                <div class="section-content">
+                    医療脱毛を契約するときは、脱毛内容について細かく確認しましょう。クリニックごとに様々な脱毛プランがあるため、自分の希望する脱毛部位や目的に沿っているかどうか判断する必要があります。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    例えば「全身脱毛」と言っても、顔・VIOを含むプランもあれば、含まないプランもあります。また、回数や期間も様々です。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    契約した後に脱毛内容を変更すると、さらに料金が加算されることも考えられるため、契約する前に<span style="background-color: #fff3cd; padding: 2px 4px;">脱毛内容はしっかりと確認しておくことが大切です</span>。
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Fees -->
+        <div class="article-card">
+            <div class="highlight-box" id="additional-fees">
+                <div class="section-title">追加費用がかからないか確認する</div>
+                <div class="section-content">
+                    医療脱毛の契約時には、追加の費用についても確認するようにしましょう。提示された料金とは別に、予想外の追加費用がかかってしまう可能性もあります。
+                </div>
+                <div class="section-content" style="margin-top: 12px;">
+                    追加費用が掛かる項目として、代表的なものは以下の通りです。
+                </div>
+
+                <ul class="fee-list">
+                    <li class="fee-item">初診料・再診料</li>
+                    <li class="fee-item">シェービング代</li>
+                    <li class="fee-item">麻酔代</li>
+                    <li class="fee-item">脱毛中止時の解約手数料</li>
+                    <li class="fee-item">肌トラブル時の診察・治療費</li>
+                </ul>
+
+                <div class="section-content">
+                    特にシェービング代は、クリニックによって異なる費用です。<span style="background-color: #fff3cd; padding: 2px 4px;">追加費用については、契約前に必ず確認する</span>ようにしてください。
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="article-card">
+            <div class="highlight-box" id="troubles">
+                <div class="section-title">それでもトラブルになってしまったら</div>
+                <div class="section-content">
+                    万が一、医療脱毛の契約についてトラブルになってしまった場合は、以下の窓口に相談することが可能です。
+                </div>
+
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="#" class="contact-link">医療安全支援センター（医療に関する苦情・心配事の相談）</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="#" class="contact-link">消費者ホットライン（契約内容や契約条件など、契約に関する相談）</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="#" class="contact-link">医療相談窓口（医療に関する広告についての相談）</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add click animation to links
+        document.querySelectorAll('.toc-link, .contact-link').forEach(link => {
+            link.addEventListener('click', function() {
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
